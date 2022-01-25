@@ -1,0 +1,41 @@
+<head>
+  <title>Record App</title>
+  <!-- обратите внимание, что мы подключаем файл с расширением `.css` -->
+  <!-- несмотря на то, что стили будем писать в файле с расширением `.scss` -->
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <h1>Record App</h1>
+  </header>
+
+  <main>
+    <!-- кнопка для начала записи -->
+    <button class="btn" id="record_btn">
+      <img src="img/microphone.png" alt="record" id="record_img" />
+    </button>
+
+    <!-- раздел для записей, полученных от сервера -->
+    <section>
+      <h2>Мои записи</h2>
+      <div id="records_box"></div>
+    </section>
+
+    <!-- раздел для новой записи -->
+    <section id="record_box">
+      <h2>Текущая запись</h2>
+      <!-- контейнер для новой записи -->
+      <div id="audio_box"></div>
+      <!-- кнопки для сохранения и удаления новой записи -->
+      <div class="action_box">
+        <button class="btn btn_success" id="save_btn">Сохранить</button>
+        <button class="btn btn_danger" id="remove_btn">Удалить</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>&copy;&nbsp;</footer>
+
+  <script src="script.js"></script>
+</body>

@@ -1,0 +1,158 @@
+// импортируем гугл-шрифт
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+// определяем переменные
+// палитру я позаимствовал у `Bootstrap`
+$primary: #0275d8;
+$success: #5cb85c;
+$info: #5bc0de;
+$danger: #d9534f;
+$dark: #292b2c;
+$light: #f7f7f7;
+
+// определяем миксин - "переиспользуемый" блок кода
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// сброс стилей
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  // применяем переменную
+  color: $light;
+}
+
+// общие стили
+body {
+  // применяем миксин
+  @include flex-center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $dark;
+  text-align: center;
+}
+
+// это позволяет прижать футер к нижней части области просмотра
+main {
+  padding-top: 3rem;
+  flex: 1;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 1.8rem;
+}
+
+h2 {
+  margin: 0.75rem 0;
+  font-size: 1.4rem;
+}
+
+// стили для кнопок
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.2s ease-in-out;
+
+  // `&` - родительский селектор
+  &_success {
+    background-color: $success;
+  }
+  &_danger {
+    background-color: $danger;
+  }
+  &:hover {
+    background-color: $info;
+    color: $dark;
+  }
+}
+
+#record_btn {
+  width: 150px;
+  border-radius: 15%;
+}
+
+img {
+  width: 100%;
+}
+
+// простая анимация
+@keyframes show {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+  }
+}
+@keyframes hide {
+  from {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+  }
+}
+
+// начальное состояние
+#record_box {
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+}
+
+// классы для анимации
+.show {
+  animation: show 0.4s linear forwards;
+}
+
+.hide {
+  animation: hide 0.4s linear forwards;
+}
+
+.action_box {
+  margin: 1rem 0;
+}
+
+#records_box {
+  // снова применяем миксин - "переиспользуемость" в действии
+  @include flex-center;
+}
+
+.audio_item {
+  margin: 0.5rem;
+  max-width: 320px;
+  @include flex-center;
+
+  // расширение общих стилей для кнопок за счет вложенности
+  .btn {
+    @include flex-center;
+    width: 50px;
+    background-color: $primary;
+    margin-right: 0.5rem;
+  }
+}
+
+footer {
+  margin: 0.5rem 0;
+}
